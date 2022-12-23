@@ -246,6 +246,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Convert"/>
                                 <connections>
                                     <action selector="calculateButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lfB-nU-Nqh"/>
+                                    <action selector="convertButtonTapped:" destination="vts-TB-IuW" eventType="touchUpInside" id="PLN-7B-FDK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -261,6 +262,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HsS-Je-g04"/>
+                    <connections>
+                        <outlet property="currencyInLabel" destination="JPM-ad-Nca" id="5Qb-09-oTU"/>
+                        <outlet property="currencyOutLabel" destination="tSd-Tq-peO" id="Z0l-ME-xqR"/>
+                        <outlet property="timerLabel" destination="qMX-Ed-JaS" id="cE5-87-wcK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qKK-Q7-h2P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

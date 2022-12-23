@@ -19,6 +19,8 @@
 		9F5E31E22955FBC10084763D /* CurrencyResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E31E12955FBC10084763D /* CurrencyResultPresenter.swift */; };
 		9F5E31E42955FC010084763D /* CurrencyResultRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E31E32955FC010084763D /* CurrencyResultRouter.swift */; };
 		9F5E31E62955FC1C0084763D /* CurrencyResultInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E31E52955FC1C0084763D /* CurrencyResultInterector.swift */; };
+		9F5E31E8295639290084763D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E31E7295639290084763D /* Constants.swift */; };
+		9F5E31EA29563C720084763D /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E31E929563C720084763D /* APIService.swift */; };
 		9F8767842955BFB800AF9CCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8767832955BFB800AF9CCA /* AppDelegate.swift */; };
 		9F8767862955BFB800AF9CCA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8767852955BFB800AF9CCA /* SceneDelegate.swift */; };
 		9F87678B2955BFB800AF9CCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8767892955BFB800AF9CCA /* Main.storyboard */; };
@@ -64,6 +66,8 @@
 		9F5E31E12955FBC10084763D /* CurrencyResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResultPresenter.swift; sourceTree = "<group>"; };
 		9F5E31E32955FC010084763D /* CurrencyResultRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResultRouter.swift; sourceTree = "<group>"; };
 		9F5E31E52955FC1C0084763D /* CurrencyResultInterector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResultInterector.swift; sourceTree = "<group>"; };
+		9F5E31E7295639290084763D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9F5E31E929563C720084763D /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		9F8767802955BFB800AF9CCA /* SimpleCurrency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleCurrency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8767832955BFB800AF9CCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F8767852955BFB800AF9CCA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				9F5E31C72955E8A70084763D /* UIViewController+ConfigureKeyboard.swift */,
+				9F5E31E7295639290084763D /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 		9F8767C22955C79D00AF9CCA /* NetworkServices */ = {
 			isa = PBXGroup;
 			children = (
+				9F5E31E929563C720084763D /* APIService.swift */,
 			);
 			path = NetworkServices;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F5E31E02955FBA40084763D /* CurrencyResultConfigurator.swift in Sources */,
+				9F5E31EA29563C720084763D /* APIService.swift in Sources */,
 				9F8767842955BFB800AF9CCA /* AppDelegate.swift in Sources */,
 				9F5E31D62955FB090084763D /* CurrencyConvertPresenter.swift in Sources */,
 				9F8767BE2955C26E00AF9CCA /* HomeRouter.swift in Sources */,
@@ -409,6 +416,7 @@
 				9F5E31D82955FB200084763D /* CurrencyConvertRouter.swift in Sources */,
 				9F5E31E22955FBC10084763D /* CurrencyResultPresenter.swift in Sources */,
 				9F5E31CA2955F46A0084763D /* BorderView.swift in Sources */,
+				9F5E31E8295639290084763D /* Constants.swift in Sources */,
 				9F5E31E42955FC010084763D /* CurrencyResultRouter.swift in Sources */,
 				9F8767C02955C28200AF9CCA /* HomeInterector.swift in Sources */,
 				9F5E31DA2955FB3A0084763D /* CurrencyConvertInterector.swift in Sources */,
