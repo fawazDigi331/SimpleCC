@@ -111,7 +111,6 @@ class HomeViewController: UIViewController, HomeViewProtocol {
     
     func storeValues() {
         var currencyAmount: String?
-        DispatchQueue.main.async {
             UserDefaults.standard.set(self.CurrencyInTextField.text, forKey: uds.kCurrencyInSymbol)
             UserDefaults.standard.set(self.currencyOutTextField.text, forKey: uds.kCurrencyOutSymbol)
             currencyAmount = self.amountTextField.text ?? "1"
@@ -119,7 +118,6 @@ class HomeViewController: UIViewController, HomeViewProtocol {
 //                currencyAmount?.removeLast(2)
 //            }
             UserDefaults.standard.set(currencyAmount, forKey: uds.kCurrencyAmountValue)
-        }
     }
     
    
