@@ -13,6 +13,16 @@ protocol HomeConfiguratorProtocol: AnyObject {
 
 class HomeConfigurator: HomeConfiguratorProtocol{
     func configure(with viewController: HomeViewController) {
-    
+        
+        let presenter = HomePresenter(view: viewController)
+        let interector = HomeInteractor(presenter: presenter)
+        let router = HomeRouter(viewController: viewController)
+        
+        viewController.presenter = presenter
+        
+        presenter.interactor = interector
+        presenter.router = router
+        
+        
     }
 }

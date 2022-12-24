@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F2220762957077B00C2CC7E /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2220752957077B00C2CC7E /* StorageService.swift */; };
+		9F222078295707F700C2CC7E /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F222077295707F700C2CC7E /* Currency.swift */; };
+		9F22207C2957237300C2CC7E /* Locale+CurrencyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F22207B2957237300C2CC7E /* Locale+CurrencyCodes.swift */; };
 		9F5E31C82955E8A70084763D /* UIViewController+ConfigureKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E31C72955E8A70084763D /* UIViewController+ConfigureKeyboard.swift */; };
 		9F5E31CA2955F46A0084763D /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E31C92955F46A0084763D /* BorderView.swift */; };
 		9F5E31D02955FA2F0084763D /* CurrencyConvertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E31CF2955FA2F0084763D /* CurrencyConvertVC.swift */; };
@@ -54,6 +57,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F2220752957077B00C2CC7E /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		9F222077295707F700C2CC7E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		9F22207B2957237300C2CC7E /* Locale+CurrencyCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+CurrencyCodes.swift"; sourceTree = "<group>"; };
 		9F5E31C72955E8A70084763D /* UIViewController+ConfigureKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ConfigureKeyboard.swift"; sourceTree = "<group>"; };
 		9F5E31C92955F46A0084763D /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 		9F5E31CF2955FA2F0084763D /* CurrencyConvertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertVC.swift; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 			children = (
 				9F5E31C72955E8A70084763D /* UIViewController+ConfigureKeyboard.swift */,
 				9F5E31E7295639290084763D /* Constants.swift */,
+				9F22207B2957237300C2CC7E /* Locale+CurrencyCodes.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -146,7 +153,7 @@
 			children = (
 				9F8767912955BFB900AF9CCA /* Info.plist */,
 				9F8767B32955BFE400AF9CCA /* Modules */,
-				9F8767C22955C79D00AF9CCA /* NetworkServices */,
+				9F8767C22955C79D00AF9CCA /* Services */,
 				9F8767C12955C78B00AF9CCA /* Entities */,
 				9F8767C32955C7BD00AF9CCA /* Views */,
 				9F8767C42955C7CE00AF9CCA /* Delegates */,
@@ -223,16 +230,18 @@
 		9F8767C12955C78B00AF9CCA /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				9F222077295707F700C2CC7E /* Currency.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		9F8767C22955C79D00AF9CCA /* NetworkServices */ = {
+		9F8767C22955C79D00AF9CCA /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				9F5E31E929563C720084763D /* APIService.swift */,
+				9F2220752957077B00C2CC7E /* StorageService.swift */,
 			);
-			path = NetworkServices;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		9F8767C32955C7BD00AF9CCA /* Views */ = {
@@ -409,12 +418,15 @@
 				9F5E31D02955FA2F0084763D /* CurrencyConvertVC.swift in Sources */,
 				9F5E31E62955FC1C0084763D /* CurrencyResultInterector.swift in Sources */,
 				9F5E31D42955FAEA0084763D /* CurrencyConvertConfigurator.swift in Sources */,
+				9F2220762957077B00C2CC7E /* StorageService.swift in Sources */,
 				9F8767BC2955C25D00AF9CCA /* HomePresenter.swift in Sources */,
 				9F8767B82955C18100AF9CCA /* HomeViewController.swift in Sources */,
 				9F8767BA2955C24500AF9CCA /* HomeConfigurator.swift in Sources */,
 				9F5E31C82955E8A70084763D /* UIViewController+ConfigureKeyboard.swift in Sources */,
+				9F222078295707F700C2CC7E /* Currency.swift in Sources */,
 				9F5E31D82955FB200084763D /* CurrencyConvertRouter.swift in Sources */,
 				9F5E31E22955FBC10084763D /* CurrencyResultPresenter.swift in Sources */,
+				9F22207C2957237300C2CC7E /* Locale+CurrencyCodes.swift in Sources */,
 				9F5E31CA2955F46A0084763D /* BorderView.swift in Sources */,
 				9F5E31E8295639290084763D /* Constants.swift in Sources */,
 				9F5E31E42955FC010084763D /* CurrencyResultRouter.swift in Sources */,
