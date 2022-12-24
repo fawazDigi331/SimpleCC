@@ -14,7 +14,9 @@ public struct apikeys {
 
 // MARK: all the UserDefaults keys listed here
 public struct uds {
-    static var kApiKey = "defaultKey"
+    static var kCurrencyInSymbol = "kCurrencyInSymbol"
+    static var kCurrencyOutSymbol = "kCurrencyOutSymbol"
+    static var kCurrencyAmountValue = "kCurrencyAmountValue"
 }
 
 // MARK: all the urls listed here - live or staging

@@ -20,14 +20,14 @@ struct Currency: Codable {
 
     enum CodingKeys: String, CodingKey {
         case result, documentation
-        case termsOfUse
-        case timeLastUpdateUnix
-        case timeLastUpdateUTC
-        case timeNextUpdateUnix
-        case timeNextUpdateUTC
-        case baseCode
-        case targetCode
-        case conversionRate
-        case conversionResult
+        case termsOfUse = "terms_of_use"
+        case timeLastUpdateUnix = "time_last_update_unix"
+        case timeLastUpdateUTC = "time_last_update_utc"
+        case timeNextUpdateUnix = "time_next_update_unix"
+        case timeNextUpdateUTC = "time_next_update_utc"
+        case baseCode = "base_code"
+        case targetCode = "target_code"
+        case conversionRate = "conversion_rate"
+        case conversionResult = "conversion_result"
     }
 }

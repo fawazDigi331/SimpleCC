@@ -15,6 +15,7 @@ protocol APIServiceProtocol: AnyObject {
 }
 
 class APIService: APIServiceProtocol {
+    var currencies: Currency?
     func getAllCurrencies(completion: @escaping ([String : Any]?, Error?) -> ()) {
         if let url = URL(string: allCurrenciesUrl){
             fetchJSON(url: url, completion: completion)
@@ -34,6 +35,7 @@ class APIService: APIServiceProtocol {
     }
     
     func pairConversionUrl(currencyInCode: String, currencyOutCode: String, amount: String) -> String {
+        print("Pair Currency URL: \(urls.liveBaseUrl)pair/\(currencyInCode)/\(currencyOutCode)/\(amount)")
         return "\(urls.liveBaseUrl)pair/\(currencyInCode)/\(currencyOutCode)/\(amount)"
     }
     
@@ -47,10 +49,15 @@ class APIService: APIServiceProtocol {
             }
             
             guard let data = data else { return }
-            
+            let decoder = JSONDecoder()
             do {
+                let response = try decoder.decode(Currency.self, from: data)
+                self.currencies = response
+                Storage.store(self.currencies, to: .documents, as: "PairCurrencies.json")
+                print("Pair Currencies: \(String(describing: self.currencies))")
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
                 completion(json, nil)
+                
                 return
             }
             catch let jsonErr {

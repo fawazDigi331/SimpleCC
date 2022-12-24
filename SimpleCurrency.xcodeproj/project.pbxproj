@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9F2220762957077B00C2CC7E /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2220752957077B00C2CC7E /* StorageService.swift */; };
 		9F222078295707F700C2CC7E /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F222077295707F700C2CC7E /* Currency.swift */; };
-		9F22207C2957237300C2CC7E /* Locale+CurrencyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F22207B2957237300C2CC7E /* Locale+CurrencyCodes.swift */; };
 		9F5E31C82955E8A70084763D /* UIViewController+ConfigureKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E31C72955E8A70084763D /* UIViewController+ConfigureKeyboard.swift */; };
 		9F5E31CA2955F46A0084763D /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E31C92955F46A0084763D /* BorderView.swift */; };
 		9F5E31D02955FA2F0084763D /* CurrencyConvertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5E31CF2955FA2F0084763D /* CurrencyConvertVC.swift */; };
@@ -37,6 +35,7 @@
 		9F8767BC2955C25D00AF9CCA /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8767BB2955C25D00AF9CCA /* HomePresenter.swift */; };
 		9F8767BE2955C26E00AF9CCA /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8767BD2955C26E00AF9CCA /* HomeRouter.swift */; };
 		9F8767C02955C28200AF9CCA /* HomeInterector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8767BF2955C28200AF9CCA /* HomeInterector.swift */; };
+		9FC2BE4B29578AF1003BE16C /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC2BE4A29578AF1003BE16C /* Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,9 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9F2220752957077B00C2CC7E /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		9F222077295707F700C2CC7E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
-		9F22207B2957237300C2CC7E /* Locale+CurrencyCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+CurrencyCodes.swift"; sourceTree = "<group>"; };
 		9F5E31C72955E8A70084763D /* UIViewController+ConfigureKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ConfigureKeyboard.swift"; sourceTree = "<group>"; };
 		9F5E31C92955F46A0084763D /* BorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderView.swift; sourceTree = "<group>"; };
 		9F5E31CF2955FA2F0084763D /* CurrencyConvertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertVC.swift; sourceTree = "<group>"; };
@@ -91,6 +88,7 @@
 		9F8767BB2955C25D00AF9CCA /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		9F8767BD2955C26E00AF9CCA /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		9F8767BF2955C28200AF9CCA /* HomeInterector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInterector.swift; sourceTree = "<group>"; };
+		9FC2BE4A29578AF1003BE16C /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +121,6 @@
 			children = (
 				9F5E31C72955E8A70084763D /* UIViewController+ConfigureKeyboard.swift */,
 				9F5E31E7295639290084763D /* Constants.swift */,
-				9F22207B2957237300C2CC7E /* Locale+CurrencyCodes.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -239,7 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				9F5E31E929563C720084763D /* APIService.swift */,
-				9F2220752957077B00C2CC7E /* StorageService.swift */,
+				9FC2BE4A29578AF1003BE16C /* Storage.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -414,11 +411,11 @@
 				9F8767842955BFB800AF9CCA /* AppDelegate.swift in Sources */,
 				9F5E31D62955FB090084763D /* CurrencyConvertPresenter.swift in Sources */,
 				9F8767BE2955C26E00AF9CCA /* HomeRouter.swift in Sources */,
+				9FC2BE4B29578AF1003BE16C /* Storage.swift in Sources */,
 				9F8767862955BFB800AF9CCA /* SceneDelegate.swift in Sources */,
 				9F5E31D02955FA2F0084763D /* CurrencyConvertVC.swift in Sources */,
 				9F5E31E62955FC1C0084763D /* CurrencyResultInterector.swift in Sources */,
 				9F5E31D42955FAEA0084763D /* CurrencyConvertConfigurator.swift in Sources */,
-				9F2220762957077B00C2CC7E /* StorageService.swift in Sources */,
 				9F8767BC2955C25D00AF9CCA /* HomePresenter.swift in Sources */,
 				9F8767B82955C18100AF9CCA /* HomeViewController.swift in Sources */,
 				9F8767BA2955C24500AF9CCA /* HomeConfigurator.swift in Sources */,
@@ -426,7 +423,6 @@
 				9F222078295707F700C2CC7E /* Currency.swift in Sources */,
 				9F5E31D82955FB200084763D /* CurrencyConvertRouter.swift in Sources */,
 				9F5E31E22955FBC10084763D /* CurrencyResultPresenter.swift in Sources */,
-				9F22207C2957237300C2CC7E /* Locale+CurrencyCodes.swift in Sources */,
 				9F5E31CA2955F46A0084763D /* BorderView.swift in Sources */,
 				9F5E31E8295639290084763D /* Constants.swift in Sources */,
 				9F5E31E42955FC010084763D /* CurrencyResultRouter.swift in Sources */,

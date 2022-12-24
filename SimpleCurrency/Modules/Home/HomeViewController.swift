@@ -11,19 +11,20 @@ protocol HomeViewProtocol: AnyObject {
     func configCurrencyInPicker()
     func configCurrencyOutPicker()
     func configureKeyboard()
-    func setCurrencyInValue(with value: String?)
-    func setCurrencyInCode(with code: String)
-    func setCurrencyOutCode(with code: String)
+    func storeValues()
+    
 }
 
 class HomeViewController: UIViewController, HomeViewProtocol {
     var presenter: HomePresenterProtocol!
+    var currencyInValue: String?
+    var currencyOutValue: String?
     let configurator: HomeConfiguratorProtocol! = HomeConfigurator()
-    let currencyList = Locale.isoCurrencyCodes.compactMap { Locale.current.localizedString(forCurrencyCode: $0) }
+    let currencyInList = ["GBP", "USD", "EUR", "AED", "AUD", "CAD", "SGD", "JPY", "INR", "LKR", "NZD", "KWD", "SAR"]
+    let currencyOutList = ["EUR", "SGD", "JPY", "INR", "LKR", "NZD", "KWD", "SAR", "GBP", "USD", "AED", "AUD", "CAD"]
     
     
     // MARK: outlets and basic configurations
-    
     @IBOutlet weak var amountTextField: UITextField!{
         didSet{
             amountTextField.keyboardType = .decimalPad
@@ -36,7 +37,7 @@ class HomeViewController: UIViewController, HomeViewProtocol {
     // MARK: Initialize variables
     let currencyInPicker = UIPickerView()
     let currencyOutPicker = UIPickerView()
-    
+    public weak var toolbarDelegate: UIPickerViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,8 @@ class HomeViewController: UIViewController, HomeViewProtocol {
     @IBAction func swapButtonTapped(_ sender: Any) {
     }
     @IBAction func calculateButtonTapped(_ sender: Any) {
+        self.storeValues()
+        presenter.calculateButtonTapped()
     }
     
     // MARK: Methods for HomeViewProtocol
@@ -60,25 +63,82 @@ class HomeViewController: UIViewController, HomeViewProtocol {
     func configCurrencyInPicker() {
         self.currencyInPicker.delegate = self
         self.currencyInPicker.dataSource = self
+        
+        // UIPickerView Customization
+        self.currencyInPicker.backgroundColor = .white
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = .systemGray
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.doneTapped))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.cancelTapped))
+        
+        doneButton.tintColor = .systemRed
+
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
         self.CurrencyInTextField.inputView = currencyInPicker
+        self.CurrencyInTextField.inputAccessoryView = toolBar
     }
     
     func configCurrencyOutPicker() {
         self.currencyOutPicker.delegate = self
         self.currencyOutPicker.dataSource = self
-        self.currencyOutTextField.inputView = currencyInPicker
+        
+        // UIPickerView Customization
+        self.currencyOutPicker.backgroundColor = .white
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = .systemGray
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.outDoneTapped))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.outCancelTapped))
+        
+        doneButton.tintColor = .systemRed
+
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        self.currencyOutTextField.inputView = currencyOutPicker
+        self.currencyOutTextField.inputAccessoryView = toolBar
     }
     
-    func setCurrencyInValue(with value: String?) {
-        <#code#>
+    func storeValues() {
+        var currencyAmount: String?
+        DispatchQueue.main.async {
+            UserDefaults.standard.set(self.CurrencyInTextField.text, forKey: uds.kCurrencyInSymbol)
+            UserDefaults.standard.set(self.currencyOutTextField.text, forKey: uds.kCurrencyOutSymbol)
+            currencyAmount = self.amountTextField.text ?? "1"
+//            if ((currencyAmount?.hasSuffix(".0")) != nil) {
+//                currencyAmount?.removeLast(2)
+//            }
+            UserDefaults.standard.set(currencyAmount, forKey: uds.kCurrencyAmountValue)
+        }
     }
     
-    func setCurrencyInCode(with code: String) {
-        <#code#>
-    }
+   
     
-    func setCurrencyOutCode(with code: String) {
-        <#code#>
+    // MARK: UIPickerView Selectors
+    @objc func doneTapped() {
+        self.CurrencyInTextField.resignFirstResponder()
+    }
+
+    @objc func cancelTapped() {
+        self.CurrencyInTextField.resignFirstResponder()
+    }
+
+    @objc func outDoneTapped() {
+        self.currencyOutTextField.resignFirstResponder()
+    }
+
+    @objc func outCancelTapped() {
+        self.currencyOutTextField.resignFirstResponder()
     }
 
 }
@@ -90,22 +150,30 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return currencyList.count
+        if pickerView == currencyInPicker{
+            return currencyInList.count
+        }
+        return currencyOutList.count // for currencyOut picker
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        // for the moment set the same order list of local currency for both currecy In and currency Out - Later we can separate it or filter it
-        let row = currencyList[row]
+        if pickerView == currencyInPicker{
+            let row = currencyInList[row]
+            return row
+        }
+        //for currency out picker
+        let row = currencyOutList[row]
         return row
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == currencyInPicker{
-            self.CurrencyInTextField.text = currencyList[row]
+            self.CurrencyInTextField.text = currencyInList[row]
             // save selected currencyIn code here
         }
-        else if pickerView == currencyOutPicker{
-            self.currencyOutTextField.text = currencyList[row]
+        
+        if pickerView == currencyOutPicker{
+            self.currencyOutTextField.text = currencyOutList[row]
             // save selected currencyOut code here
             
         }

@@ -23,15 +23,15 @@
                                         <rect key="frame" x="40" y="40" width="120" height="60"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="GBP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gt6-yo-8gJ">
-                                                <rect key="frame" x="8" y="8" width="66" height="44"/>
+                                                <rect key="frame" x="8" y="8" width="104" height="44"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="66" id="WpL-uP-0bV"/>
+                                                    <constraint firstAttribute="width" constant="104" id="WpL-uP-0bV"/>
                                                     <constraint firstAttribute="height" constant="44" id="pKH-Sc-bC0"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpZ-k2-MJL">
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpZ-k2-MJL">
                                                 <rect key="frame" x="76" y="8" width="44" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="44" id="vYg-3r-p5L"/>
@@ -77,15 +77,15 @@
                                         <rect key="frame" x="254" y="40" width="120" height="60"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="EUR" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Orn-IO-NtC">
-                                                <rect key="frame" x="8" y="8" width="66" height="44"/>
+                                                <rect key="frame" x="8" y="8" width="104" height="44"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="66" id="9Qf-aI-yIV"/>
+                                                    <constraint firstAttribute="width" constant="104" id="9Qf-aI-yIV"/>
                                                     <constraint firstAttribute="height" constant="44" id="dCM-pL-B7p"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJN-H0-PiN">
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJN-H0-PiN">
                                                 <rect key="frame" x="76" y="8" width="44" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="9TI-58-VWi"/>
