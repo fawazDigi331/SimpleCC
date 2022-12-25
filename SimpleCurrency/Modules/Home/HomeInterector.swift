@@ -8,13 +8,15 @@
 import Foundation
 
 protocol HomeInteractorProtocol: AnyObject{
-    func getAllCurrencies()
     func callCurrencyPairAPI()
+    var router: HomeRouterProtocol! { set get }
+    var presenter: HomePresenterProtocol! { set get }
 }
 
 class HomeInteractor: HomeInteractorProtocol {
  
-    weak var presenter: HomePresenterProtocol?
+    weak var presenter: HomePresenterProtocol!
+    var router: HomeRouterProtocol!
     var currencyInValue: String?
     var currencyOutValue: String?
     var currencyValue: String?
@@ -23,33 +25,20 @@ class HomeInteractor: HomeInteractorProtocol {
         self.presenter = presenter
     }
     
-    func getAllCurrencies() {
-        apiService.getAllCurrencies{ (dict, err) in
-            if err != nil {
-                return
-            }
-            if let err = err{
-                print(err)
-            }
-        }
-    }
-    
    func callCurrencyPairAPI(){
        self.currencyInValue = UserDefaults.standard.string(forKey: uds.kCurrencyInSymbol)
        self.currencyOutValue = UserDefaults.standard.string(forKey: uds.kCurrencyOutSymbol)
        self.currencyValue = UserDefaults.standard.string(forKey: uds.kCurrencyAmountValue)
-       
+
        apiService.getPairCurrencies(currencyInCode: self.currencyInValue ?? "GBP", currencyOutCode: self.currencyOutValue ?? "EUR", amount: self.currencyValue ?? "1") { (dict, err) in
            
-           if err != nil {
-               return
-           }
+          if err != nil {
+             return
+          }
+           
            if let err = err{
                print(err)
            }
-           
        }
-       
-       
    }
 }

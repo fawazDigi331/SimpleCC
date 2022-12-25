@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol HomeRouterProtocol: AnyObject {
-    func testNavigation()
+    func showCurrencyConvertScreen()
+   
 }
 
 class HomeRouter: HomeRouterProtocol {
@@ -18,7 +20,9 @@ class HomeRouter: HomeRouterProtocol {
         self.viewController = viewController
     }
     
-    func testNavigation() {
-        print("Test Navigation")
+    func showCurrencyConvertScreen() {
+        let vc = CurrencyConvertVC()
+        let navController = UINavigationController(rootViewController: vc)
+        viewController?.present(navController, animated: true)
     }
 }

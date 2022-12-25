@@ -19,10 +19,7 @@ class HomeConfigurator: HomeConfiguratorProtocol{
         let router = HomeRouter(viewController: viewController)
         
         viewController.presenter = presenter
-        
         presenter.interactor = interector
         presenter.router = router
-        
-        
     }
 }

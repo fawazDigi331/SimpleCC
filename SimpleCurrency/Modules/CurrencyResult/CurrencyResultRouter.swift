@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+protocol CurrencyResultRouterProtocol: AnyObject{
+   
+}
+
+class CurrencyResultRouter: CurrencyResultRouterProtocol {
+    weak var viewController: CurrencyResultVC?
+    
+    init(viewController: CurrencyResultVC){
+        self.viewController = viewController
+    }
+    
+}

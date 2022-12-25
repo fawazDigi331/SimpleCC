@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+protocol CurrencyConvertRouterProtocol: AnyObject{
+   
+}
+
+class CurrencyConvertRouter: CurrencyConvertRouterProtocol {
+    weak var viewController: CurrencyConvertVC?
+    
+    init(viewController: CurrencyConvertVC){
+        self.viewController = viewController
+    }
+    
+}

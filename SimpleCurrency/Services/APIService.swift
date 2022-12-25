@@ -53,11 +53,11 @@ class APIService: APIServiceProtocol {
             do {
                 let response = try decoder.decode(Currency.self, from: data)
                 self.currencies = response
-                Storage.store(self.currencies, to: .documents, as: "PairCurrencies.json")
+               
                 print("Pair Currencies: \(String(describing: self.currencies))")
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
                 completion(json, nil)
-                
+                Storage.store(self.currencies, to: .documents, as: "PairCurrencies.json")
                 return
             }
             catch let jsonErr {

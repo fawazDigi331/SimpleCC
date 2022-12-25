@@ -6,3 +6,22 @@
 //
 
 import Foundation
+
+protocol CurrencyResultPresenterProtocol: AnyObject {
+    var interactor: CurrencyResultInteractorProtocol! { set get }
+    var router: CurrencyResultRouterProtocol! { set get }
+    func configureView()
+}
+
+class CurrencyResultPresenter: CurrencyResultPresenterProtocol {
+    var interactor: CurrencyResultInteractorProtocol!
+    var router: CurrencyResultRouterProtocol!
+    weak var view: CurrencyResultViewProtocol?
+ 
+    func configureView() {
+        view?.updateValue()
+    }
+    required init(view: CurrencyResultViewProtocol) {
+        self.view = view
+    }
+}

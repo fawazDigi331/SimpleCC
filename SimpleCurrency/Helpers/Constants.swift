@@ -23,3 +23,10 @@ public struct uds {
 public struct urls{
     static var liveBaseUrl = "https://v6.exchangerate-api.com/v6/\(apikeys.apiKey)/"
 }
+
+public struct segue{
+    static var currencyConvertSegue = "currencyConvertSegue"
+    static var currencyCalculateSegue = "currencyCalculateSegue"
+    static var currencyHomeSegue = "currencyHomeSegue"
+    //currencyHomeSegue
+}

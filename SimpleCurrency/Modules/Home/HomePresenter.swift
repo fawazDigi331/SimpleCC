@@ -8,17 +8,19 @@
 import Foundation
 
 protocol HomePresenterProtocol: AnyObject {
-  //  var interactor: HomeInteractorProtocol! { set get }
-  //  var router: HomeRouterProtocol! { set get }
+    var interactor: HomeInteractorProtocol! { set get }
+    var router: HomeRouterProtocol! { set get }
     func configureView()
     func calculateButtonTapped()
+    func swapButtonTapped()
    
 }
 
 class HomePresenter: HomePresenterProtocol {
+    var router: HomeRouterProtocol!
     weak var view: HomeViewProtocol?
     var interactor: HomeInteractorProtocol!
-    var router: HomeRouterProtocol!
+    
     
     func configureView() {
         view?.configureKeyboard()
@@ -27,7 +29,13 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func calculateButtonTapped() {
+        view?.storeValues()
         interactor.callCurrencyPairAPI()
+        // router.showCurrencyConvertScreen()
+    }
+    
+    func swapButtonTapped() {
+        view?.swapCurrency()
     }
     
     required init(view: HomeViewProtocol) {

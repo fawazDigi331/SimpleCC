@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+protocol CurrencyResultInteractorProtocol: AnyObject{
+    var router: CurrencyResultRouterProtocol! { set get }
+    var presenter: CurrencyResultPresenterProtocol! { set get }
+}
+
+class CurrencyResultInteractor: CurrencyResultInteractorProtocol {
+    var router: CurrencyResultRouterProtocol!
+    
+    weak var presenter: CurrencyResultPresenterProtocol!
+    
+    required init(presenter: CurrencyResultPresenter){
+        self.presenter = presenter
+    }
+}

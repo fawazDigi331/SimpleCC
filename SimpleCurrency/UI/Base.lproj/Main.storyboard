@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3vA-Di-Bco">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -175,15 +175,17 @@
                             <constraint firstItem="gay-BQ-3ul" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fth-10-uut"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="hRl-r8-8Mr"/>
                     <connections>
                         <outlet property="CurrencyInTextField" destination="gt6-yo-8gJ" id="Iie-wI-ceX"/>
                         <outlet property="amountTextField" destination="NHK-gU-Akg" id="V7B-bF-1TL"/>
                         <outlet property="currencyOutTextField" destination="Orn-IO-NtC" id="Ku4-dQ-kBh"/>
+                        <segue destination="vts-TB-IuW" kind="show" identifier="currencyConvertSegue" id="eJp-gX-0YE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18.840579710144929" y="78.348214285714278"/>
+            <point key="canvasLocation" x="928.98550724637687" y="78.348214285714278"/>
         </scene>
         <!--Currency ConvertVC-->
         <scene sceneID="Exd-Ic-iZP">
@@ -262,15 +264,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HsS-Je-g04"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="currencyInLabel" destination="JPM-ad-Nca" id="5Qb-09-oTU"/>
                         <outlet property="currencyOutLabel" destination="tSd-Tq-peO" id="Z0l-ME-xqR"/>
                         <outlet property="timerLabel" destination="qMX-Ed-JaS" id="cE5-87-wcK"/>
+                        <segue destination="J4J-HD-bdX" kind="presentation" identifier="currencyCalculateSegue" modalPresentationStyle="fullScreen" id="gnW-gV-Qat"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qKK-Q7-h2P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="800.00000000000011" y="77.678571428571431"/>
+            <point key="canvasLocation" x="1710.144927536232" y="77.678571428571431"/>
         </scene>
         <!--Currency ResultVC-->
         <scene sceneID="k65-Pd-oJt">
@@ -317,20 +321,57 @@
                                     <constraint firstItem="hg2-Zh-0UK" firstAttribute="leading" secondItem="Hs4-YK-oB4" secondAttribute="leading" constant="19" id="xwC-AD-VzF"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syD-Ib-sFY">
+                                <rect key="frame" x="342" y="44" width="59" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="6BF-Gj-EWM"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonTapped:" destination="J4J-HD-bdX" eventType="touchUpInside" id="cRx-sO-SYk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZUO-Jd-tIw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Hs4-YK-oB4" firstAttribute="leading" secondItem="ZUO-Jd-tIw" secondAttribute="leading" id="8BG-9k-aET"/>
+                            <constraint firstItem="syD-Ib-sFY" firstAttribute="top" secondItem="ZUO-Jd-tIw" secondAttribute="top" id="GBt-A3-MC2"/>
                             <constraint firstItem="Hs4-YK-oB4" firstAttribute="trailing" secondItem="ZUO-Jd-tIw" secondAttribute="trailing" id="WVW-JX-Juj"/>
+                            <constraint firstItem="ZUO-Jd-tIw" firstAttribute="trailing" secondItem="syD-Ib-sFY" secondAttribute="trailing" constant="13" id="dmp-4S-kRv"/>
                             <constraint firstItem="Hs4-YK-oB4" firstAttribute="centerX" secondItem="I9m-Ah-sWX" secondAttribute="centerX" id="ghF-G9-fiV"/>
                             <constraint firstItem="Hs4-YK-oB4" firstAttribute="centerY" secondItem="I9m-Ah-sWX" secondAttribute="centerY" id="uwy-IH-3hD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="conversionAmountLabel" destination="hg2-Zh-0UK" id="vL0-b4-sHy"/>
+                        <outlet property="convertedAmountLabel" destination="gGX-Ah-5B0" id="icX-wc-C62"/>
+                        <segue destination="3vA-Di-Bco" kind="presentation" identifier="currencyHomeSegue" modalPresentationStyle="fullScreen" id="8c5-Kq-fdJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfK-L0-Hx2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1582.608695652174" y="77.678571428571431"/>
+            <point key="canvasLocation" x="2492.753623188406" y="77.678571428571431"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZQs-tZ-CnP">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KrJ-Hs-jxj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3vA-Di-Bco" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="dCk-pD-s4n"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UEI-5b-H7b">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="eJ8-13-fgN"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="78.348214285714278"/>
         </scene>
     </scenes>
     <resources>

@@ -12,7 +12,7 @@ protocol HomeViewProtocol: AnyObject {
     func configCurrencyOutPicker()
     func configureKeyboard()
     func storeValues()
-    
+    func swapCurrency()
 }
 
 class HomeViewController: UIViewController, HomeViewProtocol {
@@ -43,14 +43,19 @@ class HomeViewController: UIViewController, HomeViewProtocol {
         super.viewDidLoad()
         configurator.configure(with: self)
         presenter.configureView()
+       
     }
     
     // MARK: Button Actions
     @IBAction func swapButtonTapped(_ sender: Any) {
+        presenter.swapButtonTapped()
     }
     @IBAction func calculateButtonTapped(_ sender: Any) {
-        self.storeValues()
         presenter.calculateButtonTapped()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            let vc = self
+            vc.performSegue(withIdentifier: segue.currencyConvertSegue, sender: self)
+        }
     }
     
     // MARK: Methods for HomeViewProtocol
@@ -114,13 +119,17 @@ class HomeViewController: UIViewController, HomeViewProtocol {
             UserDefaults.standard.set(self.CurrencyInTextField.text, forKey: uds.kCurrencyInSymbol)
             UserDefaults.standard.set(self.currencyOutTextField.text, forKey: uds.kCurrencyOutSymbol)
             currencyAmount = self.amountTextField.text ?? "1"
-//            if ((currencyAmount?.hasSuffix(".0")) != nil) {
-//                currencyAmount?.removeLast(2)
-//            }
             UserDefaults.standard.set(currencyAmount, forKey: uds.kCurrencyAmountValue)
     }
     
-   
+    func swapCurrency(){
+        DispatchQueue.main.async {
+            self.currencyInValue = self.currencyOutTextField.text
+            self.currencyOutValue = self.CurrencyInTextField.text
+            self.CurrencyInTextField.text = self.currencyInValue ?? "EUR"
+            self.currencyOutTextField.text = self.currencyOutValue ?? "GBP"
+        }
+    }
     
     // MARK: UIPickerView Selectors
     @objc func doneTapped() {

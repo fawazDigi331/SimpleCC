@@ -7,23 +7,37 @@
 
 import UIKit
 
-class CurrencyResultVC: UIViewController {
+protocol CurrencyResultViewProtocol: AnyObject {
+    func updateValue()
+}
 
+class CurrencyResultVC: UIViewController, CurrencyResultViewProtocol {
+    let configurator: CurrencyResultConfiguratorProtocol! = CurrencyResultConfigurator()
+    var presenter: CurrencyResultPresenterProtocol!
+    var currencies: Currency?
+    @IBOutlet weak var conversionAmountLabel: UILabel!
+    @IBOutlet weak var convertedAmountLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configurator.configure(with: self)
+        presenter.configureView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        let vc = self
+        vc.performSegue(withIdentifier: segue.currencyHomeSegue, sender: self)
     }
-    */
-
+    
+    
+    func updateValue() {
+      let recievedData = Storage.retrieve("PairCurrencies.json", from: .documents, as: Currency.self)
+      self.currencies = recievedData
+        if self.currencies != nil {
+            let conversationReslt = self.currencies?.conversionResult
+            let currencyOutSymbol = self.currencies?.targetCode
+            let conversionRate = self.currencies?.conversionRate
+            self.convertedAmountLabel.text = "Great now you have \(String(format:"%.2f", conversationReslt ?? 0.00)) \(currencyOutSymbol ?? "") in your account"
+            self.conversionAmountLabel.text = "Your convertion rate was 1/\(String(format:"%.2f", conversionRate ?? 0.00))"
+         }
+     }
 }
