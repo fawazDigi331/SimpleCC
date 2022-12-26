@@ -20,6 +20,7 @@ class CurrencyConvertPresenter: CurrencyConvertPresenterProtocol {
  
     func configureView() {
         view?.updateValue()
+       
     }
     required init(view: CurrencyConvertViewProtocol) {
         self.view = view

@@ -13,6 +13,7 @@ protocol HomeViewProtocol: AnyObject {
     func configureKeyboard()
     func storeValues()
     func swapCurrency()
+    
 }
 
 class HomeViewController: UIViewController, HomeViewProtocol {
@@ -51,15 +52,16 @@ class HomeViewController: UIViewController, HomeViewProtocol {
         presenter.swapButtonTapped()
     }
     @IBAction func calculateButtonTapped(_ sender: Any) {
+        if self.amountTextField.text != ""{
         presenter.calculateButtonTapped()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             let vc = self
             vc.performSegue(withIdentifier: segue.currencyConvertSegue, sender: self)
         }
+      }
     }
     
     // MARK: Methods for HomeViewProtocol
-    
     // Dismiss the keyboard when touch outside
     func configureKeyboard(){
          hideKeyboardWhenTappedAround()
@@ -131,6 +133,7 @@ class HomeViewController: UIViewController, HomeViewProtocol {
         }
     }
     
+
     // MARK: UIPickerView Selectors
     @objc func doneTapped() {
         self.CurrencyInTextField.resignFirstResponder()

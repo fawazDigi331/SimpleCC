@@ -9,6 +9,7 @@ import UIKit
 
 protocol CurrencyConvertViewProtocol: AnyObject {
     func updateValue()
+    func startTimer()
 }
 
 class CurrencyConvertVC: UIViewController, CurrencyConvertViewProtocol {
@@ -19,10 +20,14 @@ class CurrencyConvertVC: UIViewController, CurrencyConvertViewProtocol {
     let configurator: CurrencyConvertConfiguratorProtocol! = CurrencyConvertConfigurator()
     var presenter: CurrencyConvertPresenterProtocol!
     var currencies: Currency?
+    var countdown = 30
+    var timer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
+        startTimer()
         presenter.configureView()
+        
     }
     
     func updateValue(){
@@ -36,6 +41,38 @@ class CurrencyConvertVC: UIViewController, CurrencyConvertViewProtocol {
             self.currencyInLabel.text = "\(currencyAmount ?? "1") \(currencyInSymbol ?? "")"
             self.currencyOutLabel.text = "\(String(format:"%.2f", conversationReslt ?? 0.00)) \(currencyOutSymbol ?? "")"
         }
+    }
+    
+    // MARK: Countdown timer Methods
+    func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDownTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func countDownTimer() {
+       
+        if countdown > 0 {
+            timerLabel.text = "\(countdown) sec left"
+            countdown -= 1
+        }
+        
+        if countdown == 0 {
+            timer?.invalidate()
+            // take user to previous screen
+            self.endTimerAlert()
+            print("Timer Stopped!")
+        }
+    }
+    
+    func endTimerAlert(){
+        let timerAlert = UIAlertController(title: "Session ended!", message: "You have been asked to start again!.", preferredStyle: UIAlertController.Style.alert)
+        
+        timerAlert.addAction(UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+            DispatchQueue.main.async {
+                _ = self.navigationController?.popToRootViewController(animated: true)
+            }
+        })
+    
+        self.present(timerAlert, animated: true)
     }
     
     @IBAction func convertButtonTapped(_ sender: Any) {
