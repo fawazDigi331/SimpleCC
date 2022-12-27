@@ -76,7 +76,6 @@ class CurrencyConvertVC: UIViewController, CurrencyConvertViewProtocol {
     }
     
     @IBAction func convertButtonTapped(_ sender: Any) {
-       let vc = self
-       vc.performSegue(withIdentifier: segue.currencyCalculateSegue, sender: self)
+        presenter.convertButtonTapped()
     }
 }

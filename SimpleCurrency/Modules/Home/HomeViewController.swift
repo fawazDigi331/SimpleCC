@@ -51,13 +51,10 @@ class HomeViewController: UIViewController, HomeViewProtocol {
     @IBAction func swapButtonTapped(_ sender: Any) {
         presenter.swapButtonTapped()
     }
+    
     @IBAction func calculateButtonTapped(_ sender: Any) {
         if self.amountTextField.text != ""{
         presenter.calculateButtonTapped()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-            let vc = self
-            vc.performSegue(withIdentifier: segue.currencyConvertSegue, sender: self)
-        }
       }
     }
     
@@ -150,6 +147,7 @@ class HomeViewController: UIViewController, HomeViewProtocol {
     @objc func outCancelTapped() {
         self.currencyOutTextField.resignFirstResponder()
     }
+
 
 }
 

@@ -33,6 +33,7 @@ class HomeInteractor: HomeInteractorProtocol {
        apiService.getPairCurrencies(currencyInCode: self.currencyInValue ?? "GBP", currencyOutCode: self.currencyOutValue ?? "EUR", amount: self.currencyValue ?? "1") { (dict, err) in
            
           if err != nil {
+              
              return
           }
            

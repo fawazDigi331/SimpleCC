@@ -24,10 +24,8 @@ class CurrencyResultVC: UIViewController, CurrencyResultViewProtocol {
     }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
-        let vc = self
-        vc.performSegue(withIdentifier: segue.currencyHomeSegue, sender: self)
+        presenter.doneButtonTapped()
     }
-    
     
     func updateValue() {
       let recievedData = Storage.retrieve("PairCurrencies.json", from: .documents, as: Currency.self)

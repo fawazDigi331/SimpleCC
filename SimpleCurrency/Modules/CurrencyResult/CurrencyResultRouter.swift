@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CurrencyResultRouterProtocol: AnyObject{
-   
+   func showCurrencyHomeScreen()
 }
 
 class CurrencyResultRouter: CurrencyResultRouterProtocol {
@@ -17,5 +17,13 @@ class CurrencyResultRouter: CurrencyResultRouterProtocol {
     init(viewController: CurrencyResultVC){
         self.viewController = viewController
     }
+    
+    func showCurrencyHomeScreen() {
+        viewController?.performSegue(withIdentifier: segue.currencyHomeSegue, sender: nil)
+    }
+    
+//    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // prepare here some data for destination viewController
+//    }
     
 }

@@ -31,7 +31,10 @@ class HomePresenter: HomePresenterProtocol {
     func calculateButtonTapped() {
         view?.storeValues()
         interactor.callCurrencyPairAPI()
-        // router.showCurrencyConvertScreen()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            self.router.showCurrencyConvertScreen()
+        }
+        
     }
     
     func swapButtonTapped() {

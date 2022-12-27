@@ -20,4 +20,6 @@ class CurrencyResultInteractor: CurrencyResultInteractorProtocol {
     required init(presenter: CurrencyResultPresenter){
         self.presenter = presenter
     }
+    
+    
 }

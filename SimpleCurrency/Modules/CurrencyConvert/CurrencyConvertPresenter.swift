@@ -11,6 +11,7 @@ protocol CurrencyConvertPresenterProtocol: AnyObject {
     var interactor: CurrencyConvertInteractorProtocol! { set get }
     var router: CurrencyConvertRouterProtocol! { set get }
     func configureView()
+    func convertButtonTapped()
 }
 
 class CurrencyConvertPresenter: CurrencyConvertPresenterProtocol {
@@ -20,7 +21,10 @@ class CurrencyConvertPresenter: CurrencyConvertPresenterProtocol {
  
     func configureView() {
         view?.updateValue()
-       
+    }
+    
+    func convertButtonTapped() {
+        router.showCurrencyResultScreen()
     }
     required init(view: CurrencyConvertViewProtocol) {
         self.view = view

@@ -10,7 +10,6 @@ import UIKit
 
 protocol HomeRouterProtocol: AnyObject {
     func showCurrencyConvertScreen()
-   
 }
 
 class HomeRouter: HomeRouterProtocol {
@@ -21,8 +20,10 @@ class HomeRouter: HomeRouterProtocol {
     }
     
     func showCurrencyConvertScreen() {
-        let vc = CurrencyConvertVC()
-        let navController = UINavigationController(rootViewController: vc)
-        viewController?.present(navController, animated: true)
+        viewController?.performSegue(withIdentifier: segue.currencyConvertSegue, sender: nil)
+    }
+    
+    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // prepare here some data for destination viewController
     }
 }
