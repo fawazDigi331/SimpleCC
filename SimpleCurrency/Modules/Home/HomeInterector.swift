@@ -14,7 +14,6 @@ protocol HomeInteractorProtocol: AnyObject{
 }
 
 class HomeInteractor: HomeInteractorProtocol {
- 
     weak var presenter: HomePresenterProtocol!
     var router: HomeRouterProtocol!
     var currencyInValue: String?
@@ -31,9 +30,7 @@ class HomeInteractor: HomeInteractorProtocol {
        self.currencyValue = UserDefaults.standard.string(forKey: uds.kCurrencyAmountValue)
 
        apiService.getPairCurrencies(currencyInCode: self.currencyInValue ?? "GBP", currencyOutCode: self.currencyOutValue ?? "EUR", amount: self.currencyValue ?? "1") { (dict, err) in
-           
           if err != nil {
-              
              return
           }
            

@@ -13,7 +13,6 @@ protocol CurrencyConvertViewProtocol: AnyObject {
 }
 
 class CurrencyConvertVC: UIViewController, CurrencyConvertViewProtocol {
-
     @IBOutlet weak var currencyInLabel: UILabel!
     @IBOutlet weak var currencyOutLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
@@ -25,13 +24,11 @@ class CurrencyConvertVC: UIViewController, CurrencyConvertViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
-        startTimer()
         presenter.configureView()
-        
     }
     
     func updateValue(){
-        let recievedData = Storage.retrieve("PairCurrencies.json", from: .documents, as: Currency.self)
+        let recievedData = Storage.retrieve(storageKey.pairCurrencies, from: .documents, as: Currency.self)
         let currencyAmount = UserDefaults.standard.string(forKey: uds.kCurrencyAmountValue)
         self.currencies = recievedData
         if self.currencies != nil {
@@ -49,7 +46,6 @@ class CurrencyConvertVC: UIViewController, CurrencyConvertViewProtocol {
     }
     
     @objc func countDownTimer() {
-       
         if countdown > 0 {
             timerLabel.text = "\(countdown) sec left"
             countdown -= 1
@@ -65,7 +61,6 @@ class CurrencyConvertVC: UIViewController, CurrencyConvertViewProtocol {
     
     func endTimerAlert(){
         let timerAlert = UIAlertController(title: "Session ended!", message: "You have been asked to start again!.", preferredStyle: UIAlertController.Style.alert)
-        
         timerAlert.addAction(UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
             DispatchQueue.main.async {
                 _ = self.navigationController?.popToRootViewController(animated: true)

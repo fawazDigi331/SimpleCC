@@ -30,3 +30,7 @@ public struct segue{
     static var currencyHomeSegue = "currencyHomeSegue"
     //currencyHomeSegue
 }
+
+public struct storageKey{
+    static var pairCurrencies = "PairCurrencies.json"
+}

@@ -28,7 +28,7 @@ class CurrencyResultVC: UIViewController, CurrencyResultViewProtocol {
     }
     
     func updateValue() {
-      let recievedData = Storage.retrieve("PairCurrencies.json", from: .documents, as: Currency.self)
+        let recievedData = Storage.retrieve(storageKey.pairCurrencies, from: .documents, as: Currency.self)
       self.currencies = recievedData
         if self.currencies != nil {
             let conversationReslt = self.currencies?.conversionResult

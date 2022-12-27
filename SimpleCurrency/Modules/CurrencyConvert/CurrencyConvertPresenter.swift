@@ -21,6 +21,7 @@ class CurrencyConvertPresenter: CurrencyConvertPresenterProtocol {
  
     func configureView() {
         view?.updateValue()
+        view?.startTimer()
     }
     
     func convertButtonTapped() {

@@ -56,7 +56,7 @@ public class Storage {
             }
             FileManager.default.createFile(atPath: url.path, contents: data, attributes: nil)
         } catch {
-            fatalError(error.localizedDescription)
+            return print(error.localizedDescription)
         }
     }
     
@@ -71,7 +71,7 @@ public class Storage {
         let url = getURL(for: directory).appendingPathComponent(fileName, isDirectory: false)
         
         if !FileManager.default.fileExists(atPath: url.path) {
-            fatalError("File at path \(url.path) does not exist!")
+            print("File at path \(url.path) does not exist!")
         }
         
         if let data = FileManager.default.contents(atPath: url.path) {
@@ -80,7 +80,7 @@ public class Storage {
                 let model = try decoder.decode(type, from: data)
                 return model
             } catch {
-                fatalError(error.localizedDescription)
+                return print(error.localizedDescription) as! T
             }
         } else {
             fatalError("No data at \(url.path)!")
@@ -96,7 +96,7 @@ public class Storage {
                 try FileManager.default.removeItem(at: fileUrl)
             }
         } catch {
-            fatalError(error.localizedDescription)
+            return print(error.localizedDescription)
         }
     }
     
@@ -107,7 +107,7 @@ public class Storage {
             do {
                 try FileManager.default.removeItem(at: url)
             } catch {
-                fatalError(error.localizedDescription)
+                return print(error.localizedDescription)
             }
         }
     }

@@ -24,6 +24,9 @@ class CurrencyResultPresenter: CurrencyResultPresenterProtocol {
     }
     
     func doneButtonTapped() {
+        // clear storage when done button tapped - This applies when we are not calculating all currencies online not locally
+        interactor.clearStorage(fileName: storageKey.pairCurrencies)
+        interactor.clearUserDefaults()
         router.showCurrencyHomeScreen()
     }
     required init(view: CurrencyResultViewProtocol) {
