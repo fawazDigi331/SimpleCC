@@ -10,10 +10,10 @@ import Foundation
 protocol HomePresenterProtocol: AnyObject {
     var interactor: HomeInteractorProtocol! { set get }
     var router: HomeRouterProtocol! { set get }
+    func interectorDidFetchCurrencies(with result: Result<Currency, Error>)
     func configureView()
     func calculateButtonTapped()
     func swapButtonTapped()
-   
 }
 
 class HomePresenter: HomePresenterProtocol {
@@ -31,19 +31,25 @@ class HomePresenter: HomePresenterProtocol {
     func calculateButtonTapped() {
         view?.storeValues()
         interactor.callCurrencyPairAPI()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-            self.router.showCurrencyConvertScreen()
-        }
-        
     }
     
     func swapButtonTapped() {
         view?.swapCurrency()
     }
     
+    func interectorDidFetchCurrencies(with result: Result<Currency, Error>) {
+        switch result{
+        case .success(let currencies):
+            print("Currencies: \(currencies)")
+            Storage.store(currencies, to: .documents, as: storageKey.pairCurrencies)
+            router?.showCurrencyConvertScreen()
+        case .failure(let error):
+            // if you want to show the api errors / custom errors to user you can create any alertbox or create toast message to show.
+            print("Something went wrong! \(error.localizedDescription)")
+        }
+    }
+    
     required init(view: HomeViewProtocol) {
         self.view = view
     }
-    
-    
 }

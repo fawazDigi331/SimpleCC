@@ -20,7 +20,10 @@ class HomeRouter: HomeRouterProtocol {
     }
     
     func showCurrencyConvertScreen() {
-        viewController?.performSegue(withIdentifier: segue.currencyConvertSegue, sender: nil)
+        DispatchQueue.main.async {
+            self.viewController?.performSegue(withIdentifier: segue.currencyConvertSegue, sender: nil)
+        }
+       
     }
     
     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
